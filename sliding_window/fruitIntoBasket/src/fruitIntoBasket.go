@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	trees := []int{1, 2, 3, 2, 2}
+	trees := []int{0, 1, 6, 6, 4, 4, 6}
 	answer := fruitIntoBasket(trees)
 	fmt.Println(answer)
 }

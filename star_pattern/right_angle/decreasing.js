@@ -7,6 +7,6 @@ const decreasing = (n) => {
   }
 };
 
-const size = 5;
+const size = 8;
 
 decreasing(size);

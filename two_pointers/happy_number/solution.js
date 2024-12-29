@@ -1,23 +1,25 @@
-const isHappy = (n) => {
-  let visit = new Set()
-
-  const getNextNumber = (n) => {
-    let output = 0
-
-    while (n > 0) {
-      let digit = n % 10
-      output += Math.pow(digit, 2)
-      n = Math.floor(n / 10)
+function isHappy(n) {
+  // Helper function to calculate the next number
+  const getNextNumber = (num) => {
+    let total = 0;
+    while (num > 0) {
+      const digit = num % 10;
+      total += digit * digit;
+      num = Math.floor(num / 10);
     }
-    return output
+    return total;
+  };
+
+  let slow = n;
+  let fast = getNextNumber(n);
+
+  while (fast !== 1 && slow !== fast) {
+    slow = getNextNumber(slow);
+    fast = getNextNumber(getNextNumber(fast));
   }
 
-  while (!visit.has(n)) {
-    if (visit.has(n)) return false
-    visit.add(n)
-    n = getNextNumber(n)
-    if (n === 1) return true
-  }
+  return fast === 1;
 }
 
-console.log(isHappy(19)) // true
+// Example usage
+console.log(isHappy(28)); // Output: true

@@ -1,35 +1,32 @@
 package main
 
-import (
-  "fmt"
-)
+import "fmt"
 
 func isHappy(n int) bool {
+	// Helper function to calculate the next number
 	getNextNumber := func(num int) int {
-		sum := 0
-    for num > 0 {
-      digit := num % 10
-      sum += digit * digit
-      num /= 10
-    }
-    return sum
+		total := 0
+		for num > 0 {
+			digit := num % 10
+			total += digit * digit
+			num /= 10
+		}
+		return total
 	}
 
-	// using set to track visited number
-	visited := make(map[int]bool)
+	slow := n
+	fast := getNextNumber(n)
 
-	for !visited[n]{
-		visited[n] = true
-    n = getNextNumber(n)
-		if n == 1 {
-      return true
-    }
+	// Use fast and slow pointer to detect cycle
+	for fast != 1 && slow != fast {
+		slow = getNextNumber(slow)
+		fast = getNextNumber(getNextNumber(fast))
 	}
-	return false
+
+	return fast == 1
 }
 
 func main() {
-  fmt.Println(isHappy(19)) // true
-  fmt.Println(isHappy(28))  // true
-  fmt.Println(isHappy(37))  // false
+	// Example usage
+	fmt.Println(isHappy(28)) // Output: true
 }

@@ -42,6 +42,30 @@ public:
     }
     return helper(0, matrix.size() - 1, 0, matrix[0].size() - 1);
   }
+
+  bool searchMatrix1(vector<vector<int>> &matrix, int target)
+  {
+    int rows = matrix.size();
+    int cols = matrix[0].size();
+    int row = 0, col = cols - 1;
+
+    while (row < rows && col >= 0)
+    {
+      if (matrix[row][col] == target)
+      {
+        return true;
+      }
+      else if (matrix[row][col] > target)
+      {
+        col--; // Move left
+      }
+      else
+      {
+        row++; // Move down
+      }
+    }
+    return false; // Target not found
+  }
 };
 
 int main()
@@ -54,6 +78,6 @@ int main()
       {18, 21, 23, 26, 30}};
   int target = 5;
   Solution solution;
-  cout << (solution.searchMatrix(matrix, target) ? "true" : "false") << endl;
+  cout << (solution.searchMatrix1(matrix, target) ? "true" : "false") << endl;
   return 0;
 }

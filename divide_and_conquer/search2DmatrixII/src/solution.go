@@ -32,6 +32,23 @@ func searchMatrix(matrix [][]int, target int) bool {
 	return helper(0, len(matrix)-1, 0, len(matrix[0])-1)
 }
 
+func searchMatrix1(matrix [][]int, target int) bool {
+	rows := len(matrix)
+	cols := len(matrix[0])
+	row, col := 0, cols- 1
+
+	for row < rows && col >= 0 {
+		if matrix[row][col] == target {
+      return true
+    } else if matrix[row][col] < target {
+      row++
+    } else {
+      col--
+    }
+	}
+	return false
+}
+
 func main() {
 	matrix := [][]int{
 		{1, 4, 7, 11, 15},
@@ -41,5 +58,5 @@ func main() {
 		{18, 21, 23, 26, 30},
 	}
 	target := 5
-	fmt.Println(searchMatrix(matrix, target)) // Output: true
+	fmt.Println(searchMatrix1(matrix, target)) // Output: true
 }

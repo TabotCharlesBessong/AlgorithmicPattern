@@ -1,6 +1,8 @@
 {
   "C_Cpp.errorSquiggles": "disabled",
   "files.associations": {
-    "queue": "cpp"
+    "queue": "cpp",
+    "vector": "cpp",
+    "xstring": "cpp"
   }
 }

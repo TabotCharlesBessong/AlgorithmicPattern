@@ -3,6 +3,7 @@
   "files.associations": {
     "queue": "cpp",
     "vector": "cpp",
-    "xstring": "cpp"
+    "xstring": "cpp",
+    "algorithm": "cpp"
   }
 }

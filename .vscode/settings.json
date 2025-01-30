@@ -4,6 +4,7 @@
     "queue": "cpp",
     "vector": "cpp",
     "xstring": "cpp",
-    "algorithm": "cpp"
+    "algorithm": "cpp",
+    "unordered_map": "cpp"
   }
 }

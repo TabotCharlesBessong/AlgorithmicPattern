@@ -1,4 +1,5 @@
 import string
+import re
 
 def strongPasswordChecker(s):
     
@@ -42,6 +43,23 @@ def break_substrings_with_deletions(substring_lengths,num_deletions):
         substring_lengths[best_idx_to_delete] -= 1
         num_deletions -= 1  
 
+def strong_password_checker(pw,min_lenght=6,max_lenght=20,max_repeat=2):
+    pattern = re.compile(r'(.)\1{0,' + str(max_repeat) + r'}(?=\1{' + str(max_repeat) + r'})')
+    changes = sorted((len(m.group(0)) for m in pattern.finditer(pw)),reverse=True)
+    
+    to_remove = len(pw) - max_lenght
+    while changes and changes[-1] <= to_remove:
+        to_remove -= changes.pop()
+        
+    num_changes = max(
+        len(changes),
+        int(not any(c.islower() for c in pw)) +
+        int(not any(c.isupper() for c in pw)) +
+        int(not any(c.isdigit() for c in pw)) 
+    )
+    
+    return max(min_lenght - len(pw), num_changes + max(0,len(pw) - max_lenght))
+
 # Example Usage
 print(strongPasswordChecker("a"))        # Output: 5
 print(strongPasswordChecker("aaa111"))   # Output: 2
@@ -51,3 +69,13 @@ print(strongPasswordChecker("aaabbbbcccccdddddd")) # Output: 5,
 
 # ✅ Test Case
 print(strongPasswordChecker("FFFFFFFFFFFFFFF11111111111111111111AAA")); # Expected: 23
+
+# Example Usage
+print(strong_password_checker("a"))        # Output: 5
+print(strong_password_checker("aaa111"))   # Output: 2
+print(strong_password_checker("aaaBBB111"))   # Output: 3
+print(strong_password_checker("AAAAAAAAAAAAA12345"))   # Output: 4
+print(strong_password_checker("aaabbbbcccccdddddd")) # Output: 5,
+
+# ✅ Test Case
+print(strong_password_checker("FFFFFFFFFFFFFFF11111111111111111111AAA")); # Expected: 23

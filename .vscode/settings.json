@@ -5,7 +5,8 @@
     "vector": "cpp",
     "xstring": "cpp",
     "algorithm": "cpp",
-    "unordered_map": "cpp"
+    "unordered_map": "cpp",
+    "utility": "cpp"
   },
   "sqltools.connections": [
     {

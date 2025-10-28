@@ -1,24 +1,24 @@
 
 const isAnagram = (s,t) => {
   if(s.length !== t.length){
-    console.log("one")
+    // console.log("one")
     return false
   }
 
-  let charCount = [26]
+  const charCount = new Array(26).fill(0);
 
   for (let i = 0; i < s.length; i++){
-    charCount[s.charAt(i) - 'a']++
-    charCount[t.charAt(i) - 'a']--
+    charCount[s.charCodeAt(i) - 'a'.charCodeAt(0)]++
+    charCount[t.charCodeAt(i) - 'a'.charCodeAt(0)]--
   }
 
-  for (count of charCount){
+  for (let count of charCount){
     if (count !== 0){
-      console.log("two");
+      // console.log("two");
       return false
     }
   }
-  console.log("three");
+  // console.log("three");
   return true
 }
 

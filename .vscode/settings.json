@@ -1,12 +1,21 @@
 {
   "C_Cpp.errorSquiggles": "disabled",
   "files.associations": {
+    "*.json.liquid": "json",
+    "*.yaml.liquid": "yaml",
+    "*.md.liquid": "markdown",
+    "*.js.liquid": "liquid-javascript",
+    "*.css.liquid": "liquid-css",
+    "*.scss.liquid": "liquid-scss",
+    "*.excalidraw": "json",
+    "*.excalidrawlib": "json",
     "queue": "cpp",
     "vector": "cpp",
     "xstring": "cpp",
     "algorithm": "cpp",
     "unordered_map": "cpp",
-    "utility": "cpp"
+    "utility": "cpp",
+    "cmath": "cpp"
   },
   "sqltools.connections": [
     {
